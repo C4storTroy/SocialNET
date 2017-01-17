@@ -8,10 +8,7 @@
     <title>SocialNet</title>
 </head>
 <body>
-<h1>Profile detail:</h1>
-Name: {{ profile.name }},
-Email: {{ profile.email }},
-Phone: {{ profile.phone }},
-Company: {{ profile.company }}
+   <h1>Profile detail: {{ profile.name }}</h1>
+   <a href="{% url 'invite' profile.id %}">Invite</a>
 </body>
 </html>
