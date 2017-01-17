@@ -9,5 +9,16 @@
 </head>
 <body>
 <h1>Welcome to SocialNET</h1>
+{% if  profiles %}
+<ul>
+    {% for profile in profiles %}
+    <li>
+       <a href="{% url 'show' profile.id %}"> {{ profile.name }} / {{ profile.email }} </a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No profile found</p>
+{% endif %}
 </body>
 </html>
