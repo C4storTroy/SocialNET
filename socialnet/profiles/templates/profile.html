@@ -1,14 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SocialNet</title>
-</head>
-<body>
-   <h1>Profile detail: {{ profile.name }}</h1>
-   <a href="{% url 'invite' profile.id %}">Invite</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% block body%}
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 style="margin-top: 0">{{ profile.name }}</h2>
+        <address>
+            <strong>{{ profile.company }}</strong><br>
+            <abbr title="Phone">Phone:</abbr> {{ profile.phone }}<br>
+            <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+        </address>
+            <a href="{% url 'invite' profile.id %}">Invite</a>
+        </div>
+    </div>
+{% endblock %}
