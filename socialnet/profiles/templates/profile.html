@@ -3,12 +3,16 @@
     <div class="row">
         <div class="col-lg-12">
             <h2 style="margin-top: 0">{{ profile.name }}</h2>
-        <address>
-            <strong>{{ profile.company }}</strong><br>
-            <abbr title="Phone">Phone:</abbr> {{ profile.phone }}<br>
-            <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
-        </address>
-            <a href="{% url 'invite' profile.id %}">Invite</a>
+            <address>
+                <strong>{{ profile.company }}</strong><br>
+                <abbr title="Phone">Phone:</abbr> {{ profile.phone }}<br>
+                <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+            </address>
+            {% if is_contact %}
+                <div class="well well-sm">You are connected! =D</div>
+            {% else %}
+                <a href="{% url 'invite' profile.id %}">Invite</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

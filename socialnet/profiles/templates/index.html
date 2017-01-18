@@ -15,5 +15,73 @@
             <p>No profile found</p>
         {% endif %}
     </div>
+
+    <div class="panel panel-default">
+     {% with total_invites=profile_logged.received_invites.count %}
+        {% if total_invites %}
+        <div class="panel-heading">
+            <strong>You have {{ total_invites }}
+                Invite{{ total_invites |pluralize }} waiting</strong>
+        </div>
+        <ul class="list-group">
+            {% for invite in profile_logged.received_invites.all %}
+                <li class="list-group-item">
+                {{ invite.requester.name }}
+                <a href="{% url 'accept' invite.id%}" class="pull-right">Accept</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="panel-body">
+            <p>No invites found =(</p>
+        </div>
+       {% endif %}
+    {% endwith %}
+    </div>
+
+    <!--div class="panel panel-default">
+     {% with total_invites=profile_logged.done_invites.count %}
+        {% if total_invites %}
+        <div class="panel-heading">
+            <strong>You made {{ total_invites }}
+                Invite{{ total_invites |pluralize }} </strong>
+        </div>
+        <ul class="list-group">
+            {% for invite in profile_logged.done_invites.all %}
+                <li class="list-group-item">
+                {{ invite.invited.name }}
+                <a href="#" class="pull-right">Accept</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="panel-body">
+            <p>No invites found =(</p>
+        </div>
+       {% endif %}
+    {% endwith %}
+    </div-->
+
+    <div class="panel panel-default">
+     {% with total_contacts=profile_logged.contacts.count %}
+        {% if total_contacts %}
+        <div class="panel-heading">
+            <strong>You have {{ total_contacts }}
+                Contact{{ total_contacts |pluralize }} </strong>
+        </div>
+        <ul class="list-group">
+            {% for contact in profile_logged.contacts.all %}
+                <li class="list-group-item">
+                    <a href="{% url 'show' contact.id %}">{{ contact.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="panel-body">
+            <p>No contacts =(</p>
+        </div>
+       {% endif %}
+    {% endwith %}
+    </div>
 </div>
 {% endblock %}
